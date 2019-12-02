@@ -1,4 +1,4 @@
-namespace Data.EF
+namespace Data
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace Data.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Question()
         {
-            Answer = new HashSet<Answer>();
+            Answers = new HashSet<Answer>();
             AnswerSheet = new HashSet<AnswerSheet>();
         }
 
@@ -24,8 +24,13 @@ namespace Data.EF
 
         public int? Exam_Id { get; set; }
 
+        public int? CorrectAnswer { get; set; }
+        [ForeignKey("CorrectAnswer")]
+        public virtual Answer Answer { get; set; }
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Answer> Answer { get; set; }
+        public virtual ICollection<Answer> Answers { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnswerSheet> AnswerSheet { get; set; }

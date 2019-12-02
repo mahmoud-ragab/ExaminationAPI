@@ -1,4 +1,4 @@
-namespace Data.EF
+namespace Data
 {
     using System;
     using System.Data.Entity;
@@ -31,7 +31,7 @@ namespace Data.EF
                 .HasMany(e => e.AnswerSheet)
                 .WithOptional(e => e.Answer)
                 .HasForeignKey(e => e.Answer_Id);
-            modelBuilder.Entity<Answer>().MapToStoredProcedures();
+            //modelBuilder.Entity<Answer>().MapToStoredProcedures();
 
             modelBuilder.Entity<Course>()
                 .HasMany(e => e.Exam)
@@ -49,7 +49,7 @@ namespace Data.EF
                 .WithRequired(e => e.Course)
                 .HasForeignKey(e => e.Course_Id)
                 .WillCascadeOnDelete(false);
-            modelBuilder.Entity<Course>().MapToStoredProcedures();
+            //modelBuilder.Entity<Course>().MapToStoredProcedures();
 
             modelBuilder.Entity<Department>()
                 .HasMany(e => e.Instructor)
@@ -60,7 +60,7 @@ namespace Data.EF
                 .HasMany(e => e.Student)
                 .WithOptional(e => e.Department)
                 .HasForeignKey(e => e.Dept_id);
-            modelBuilder.Entity<Department>().MapToStoredProcedures();
+            //modelBuilder.Entity<Department>().MapToStoredProcedures();
 
             modelBuilder.Entity<Exam>()
                 .HasMany(e => e.Question)
@@ -71,14 +71,14 @@ namespace Data.EF
                 .HasMany(e => e.StudentExam)
                 .WithOptional(e => e.Exam)
                 .HasForeignKey(e => e.Exam_Id);
-            modelBuilder.Entity<Exam>().MapToStoredProcedures();
+            //modelBuilder.Entity<Exam>().MapToStoredProcedures();
 
             modelBuilder.Entity<Instructor>()
                 .HasMany(e => e.InstructorCourse)
                 .WithRequired(e => e.Instructor)
                 .HasForeignKey(e => e.Instructor_Id)
                 .WillCascadeOnDelete(false);
-            modelBuilder.Entity<Instructor>().MapToStoredProcedures();
+            //modelBuilder.Entity<Instructor>().MapToStoredProcedures();
 
             modelBuilder.Entity<InstructorCourse>()
                 .Property(e => e.Evaluation)
@@ -88,7 +88,7 @@ namespace Data.EF
                 .HasMany(e => e.AnswerSheet)
                 .WithOptional(e => e.Question)
                 .HasForeignKey(e => e.Question_Id);
-            modelBuilder.Entity<Question>().MapToStoredProcedures();
+            //modelBuilder.Entity<Question>().MapToStoredProcedures();
 
             modelBuilder.Entity<Student>()
                 .HasMany(e => e.StudentCourse)
@@ -100,7 +100,7 @@ namespace Data.EF
                 .HasMany(e => e.StudentExam)
                 .WithOptional(e => e.Student)
                 .HasForeignKey(e => e.Student_Id);
-            modelBuilder.Entity<Student>().MapToStoredProcedures();
+            //modelBuilder.Entity<Student>().MapToStoredProcedures();
 
             modelBuilder.Entity<StudentExam>()
                 .HasMany(e => e.AnswerSheet)
@@ -111,7 +111,7 @@ namespace Data.EF
                 .HasMany(e => e.Course)
                 .WithOptional(e => e.Topic)
                 .HasForeignKey(e => e.Topic_Id);
-            modelBuilder.Entity<Topic>().MapToStoredProcedures();
+            //modelBuilder.Entity<Topic>().MapToStoredProcedures();
         }
     }
 }
