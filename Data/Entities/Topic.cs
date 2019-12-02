@@ -15,7 +15,7 @@ namespace Data.EF
             Course = new HashSet<Course>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int Id { get; set; }
 
         [StringLength(50)]
