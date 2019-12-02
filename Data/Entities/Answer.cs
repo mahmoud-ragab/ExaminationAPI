@@ -1,5 +1,6 @@
-namespace Data.EF
+namespace Data
 {
+    using Data.EF;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
