@@ -1,4 +1,4 @@
-namespace Data.EF
+namespace Data.amr
 {
     using System;
     using System.Collections.Generic;
