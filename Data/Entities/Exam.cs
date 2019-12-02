@@ -16,7 +16,7 @@ namespace Data.EF
             StudentExam = new HashSet<StudentExam>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int Id { get; set; }
 
         public int? Course_Id { get; set; }

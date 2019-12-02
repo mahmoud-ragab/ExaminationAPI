@@ -16,7 +16,7 @@ namespace Data.EF
             AnswerSheet = new HashSet<AnswerSheet>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int Id { get; set; }
 
         [StringLength(150)]

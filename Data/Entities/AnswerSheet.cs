@@ -9,7 +9,7 @@ namespace Data.EF
     [Table("AnswerSheet")]
     public partial class AnswerSheet
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int Id { get; set; }
 
         public int? Student_Exam_Id { get; set; }
