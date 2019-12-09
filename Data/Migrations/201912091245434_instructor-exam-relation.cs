@@ -3,7 +3,7 @@ namespace Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class relationInstructorExam : DbMigration
+    public partial class instructorexamrelation : DbMigration
     {
         public override void Up()
         {

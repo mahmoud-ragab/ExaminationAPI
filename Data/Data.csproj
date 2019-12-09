@@ -76,9 +76,9 @@
     <Compile Include="Migrations\201912071516529_add-user.Designer.cs">
       <DependentUpon>201912071516529_add-user.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912072338123_relation-Instructor-Exam.cs" />
-    <Compile Include="Migrations\201912072338123_relation-Instructor-Exam.Designer.cs">
-      <DependentUpon>201912072338123_relation-Instructor-Exam.cs</DependentUpon>
+    <Compile Include="Migrations\201912091245434_instructor-exam-relation.cs" />
+    <Compile Include="Migrations\201912091245434_instructor-exam-relation.Designer.cs">
+      <DependentUpon>201912091245434_instructor-exam-relation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -99,11 +99,11 @@
     <EmbeddedResource Include="Migrations\201912021957316_add-correct-answer-to-question.resx">
       <DependentUpon>201912021957316_add-correct-answer-to-question.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912072338123_relation-Instructor-Exam.resx">
-      <DependentUpon>201912072338123_relation-Instructor-Exam.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912071516529_add-user.resx">
       <DependentUpon>201912071516529_add-user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912091245434_instructor-exam-relation.resx">
+      <DependentUpon>201912091245434_instructor-exam-relation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
