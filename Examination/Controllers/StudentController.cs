@@ -12,7 +12,7 @@ namespace Examination.Controllers
     {
         public StudentService studentService = new StudentService();
 
-        // GET api/Customer
+        // GET api/Customer/
         [HttpGet]
         public IHttpActionResult GetAll()
         {
