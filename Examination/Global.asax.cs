@@ -19,5 +19,12 @@ namespace Examination
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        protected void Application_BeginRequest()
+        {
+            if (Request.HttpMethod == "OPTIONS")
+            {
+                Response.Flush();
+            }
+        }
     }
 }
