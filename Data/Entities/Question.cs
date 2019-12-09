@@ -24,6 +24,9 @@ namespace Data
 
         public int? Exam_Id { get; set; }
 
+        [StringLength(50)]
+        public string questionType { get; set; }
+
         public int? CorrectAnswer { get; set; }
         [ForeignKey("CorrectAnswer")]
         public virtual Answer Answer { get; set; }

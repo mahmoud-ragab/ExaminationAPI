@@ -1,4 +1,5 @@
 ﻿using Examination.Models;
+using Examination.Models.RequestModels;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,13 @@ namespace Examination.Controllers
                 }).ToList();
 
             return Ok(res);
+        }
+
+        [HttpPost]
+        public IHttpActionResult generateExam([FromBody] GenerateExamModel model)
+        {
+            questionService.generateExam(model.courseID, model.numberOfMCQ, model.numberOfTRUE_FALSE);
+            return Ok();
         }
     }
 }
