@@ -4,6 +4,7 @@ namespace Data
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Data.Entities;
 
     public partial class ExaminationContext : DbContext
     {
@@ -27,6 +28,12 @@ namespace Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Exam>()
+            .HasRequired<Instructor>(s => s.instructor)
+            .WithMany(g => g.Exams)
+            .HasForeignKey<int>(s => s.Instructor_Id)
+            .WillCascadeOnDelete();
+
             modelBuilder.Entity<Answer>()
                 .HasMany(e => e.AnswerSheet)
                 .WithOptional(e => e.Answer)

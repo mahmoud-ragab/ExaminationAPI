@@ -1,4 +1,4 @@
-namespace Data
+namespace Data.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -22,6 +22,10 @@ namespace Data
         public int? Course_Id { get; set; }
 
         public virtual Course Course { get; set; }
+
+        public int Instructor_Id { get; set; }
+        [ForeignKey("Instructor_Id")]
+        public virtual Instructor instructor { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Question> Question { get; set; }

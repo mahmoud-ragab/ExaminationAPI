@@ -1,4 +1,4 @@
-namespace Data
+namespace Data.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -32,5 +32,6 @@ namespace Data
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InstructorCourse> InstructorCourse { get; set; }
+        public virtual ICollection<Exam> Exams { get; set; }
     }
 }
