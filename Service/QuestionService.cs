@@ -1,4 +1,5 @@
 ﻿using Data;
+using Data.Entities;
 using Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,11 @@ namespace Service
         public List<Question> GetAll()
         {
             return questionRepository.GetAll();
-        } 
+        }
+
+        public void generateExam(int courseID, int numberOfMCQ, int numberOfTRUE_FALSE)
+        {
+            questionRepository.GenerateExam_SP(courseID, numberOfMCQ, numberOfTRUE_FALSE);
+        }
     }
 }

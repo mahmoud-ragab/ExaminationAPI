@@ -1,4 +1,4 @@
-namespace Data
+namespace Data.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -28,6 +28,10 @@ namespace Data
         public short? Age { get; set; }
 
         public int? Dept_id { get; set; }
+
+
+        [ForeignKey("Id")]
+        public virtual User User { get; set; }
 
         public virtual Department Department { get; set; }
 

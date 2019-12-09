@@ -1,5 +1,6 @@
 namespace Data.Migrations
 {
+    using Data.Entities;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -11,6 +12,7 @@ namespace Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(Data.ExaminationContext context)

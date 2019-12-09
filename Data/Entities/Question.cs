@@ -1,4 +1,4 @@
-namespace Data
+namespace Data.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -23,6 +23,9 @@ namespace Data
         public string Content { get; set; }
 
         public int? Exam_Id { get; set; }
+
+        [StringLength(50)]
+        public string questionType { get; set; }
 
         public int? CorrectAnswer { get; set; }
         [ForeignKey("CorrectAnswer")]
