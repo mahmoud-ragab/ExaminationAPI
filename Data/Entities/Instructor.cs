@@ -28,6 +28,9 @@ namespace Data
 
         public int? Dept_Id { get; set; }
 
+        [ForeignKey("Id")]
+        public virtual User User { get; set; }
+
         public virtual Department Department { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

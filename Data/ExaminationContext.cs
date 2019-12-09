@@ -24,6 +24,7 @@ namespace Data
         public virtual DbSet<StudentCourse> StudentCourse { get; set; }
         public virtual DbSet<StudentExam> StudentExam { get; set; }
         public virtual DbSet<Topic> Topic { get; set; }
+        public virtual DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
