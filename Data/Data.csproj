@@ -80,6 +80,10 @@
     <Compile Include="Migrations\201912091245434_instructor-exam-relation.Designer.cs">
       <DependentUpon>201912091245434_instructor-exam-relation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912091543354_add-question-type.cs" />
+    <Compile Include="Migrations\201912091543354_add-question-type.Designer.cs">
+      <DependentUpon>201912091543354_add-question-type.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Content Include="Migrations\SQL\SP_Test.sql" />
@@ -104,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912091245434_instructor-exam-relation.resx">
       <DependentUpon>201912091245434_instructor-exam-relation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912091543354_add-question-type.resx">
+      <DependentUpon>201912091543354_add-question-type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
