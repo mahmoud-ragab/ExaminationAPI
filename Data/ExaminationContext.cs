@@ -4,6 +4,7 @@ namespace Data
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Data.Entities;
 
     public partial class ExaminationContext : DbContext
     {
@@ -24,6 +25,8 @@ namespace Data
         public virtual DbSet<StudentCourse> StudentCourse { get; set; }
         public virtual DbSet<StudentExam> StudentExam { get; set; }
         public virtual DbSet<Topic> Topic { get; set; }
+     
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
