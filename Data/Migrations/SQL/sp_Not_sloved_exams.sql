@@ -2,7 +2,7 @@
 
 @id int
      AS
-select e.Id as ExamID,
+select top(15) e.Id as ExamID,
 i.Name as Instructor ,
 t.Name as Topic,
 c.Name as Course
@@ -19,20 +19,19 @@ on c.Id = sc.Course_Id
 inner join topic t
 on t.Id = c.Topic_Id
 
-inner join InstructorCourse ic
-on ic.Course_Id = c.Id
+ 
 
 inner join Instructor i
-on i.Id = ic.Instructor_Id
+on i.Id = e.Instructor_Id
 
 
 inner join Student s
 on s.Id = sc.Student_Id and s.Id = @id
 
 
-where e.Id not in (select Exam_Id from StudentExam)
+where e.Id not in (select Exam_Id from StudentExam where s.Id =Student_Id)
 
 
-
+order by e.Id desc
 
 RETURN 0

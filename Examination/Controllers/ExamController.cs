@@ -1,5 +1,4 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
 using Data;
 using Data.Entities;
 using Service;
@@ -10,7 +9,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
- 
+using System.Net.Http.Headers;
+using System.Web.Hosting;
 using System.Web.Http;
  
 
@@ -50,72 +50,30 @@ namespace Examination.Controllers
         }
 
 
-
-
-        public IHttpActionResult ExamReport(int ExamID ,int StudentID)
+        [Route("api/Report/{ExamID}/{StudentID}")]
+         
+        [HttpGet]
+        public HttpResponseMessage getReport(int ExamID, int StudentID)
         {
 
+            HttpResponseMessage httpResponseMessage = new HttpResponseMessage();
+
+            examinationContext.Configuration.ProxyCreationEnabled = false;
+           
 
             var Exam_ID = new SqlParameter("@ExamID", ExamID);
             var Student_ID = new SqlParameter("@StudentID", StudentID);
 
 
-            var data = examinationContext.Database.SqlQuery<ExamReport>("sp_ExamReport @ExamID,@StudentID", Exam_ID, StudentID).ToList();
-
-
-
-            return Ok();
-             
-
-
-
-
-
-            /*
-
-           // List<Customer> allCustomer = new List<Customer>();
-           // allCustomer = context.Customers.ToList();
-
-
-           ReportDocument rd = new ReportDocument();
-
-           //rd.Load(Path.Combine(Server.MapPath("~/Reports"), "RPT_Student_Report.rpt"));
-           // rd.Load(System.IO.Path.Combine("~/Reports", "RPT_Student_Report.rpt"));
-           rd.Load(HttpContext.Current.Server.MapPath("~/Reports/RPT_Student_Report.rpt"));
-
-           rd.SetDataSource(data);
-
-           Response.Buffer = false;
-           Response.ClearContent();
-           Response.ClearHeaders();
-
-
-           Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-           stream.Seek(0, SeekOrigin.Begin);
-           return File(stream, "application/pdf", "ExamReport.pdf");
-           */
-
-        }
-
-
-
-
-        [Route("api/Report/")]
-        [HttpGet]
-        //HttpResponseMessage
-        public IHttpActionResult ExportReport()
-        {
-
-
-            var Exam_ID = new SqlParameter("@ExamID", 1);
-            var Student_ID = new SqlParameter("@StudentID", 1);
-
-
             var data = examinationContext.Database.SqlQuery<ExamReport>("sp_ExamReport @ExamID,@StudentID", Exam_ID, Student_ID).ToList();
-            
+
+            ReportDocument report = new ReportDocument();
+            report.Load(Path.Combine(HostingEnvironment.MapPath("~/Reports/rpt_ExamReport.rpt")));
+
+
             List<ExamReport> model = new List<ExamReport>();
 
-            ReportDocument rd = new ReportDocument();
+           
 
             foreach (var details in data)
             {
@@ -138,44 +96,41 @@ namespace Examination.Controllers
 
             }
 
-            rd.Load(Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/Reports"), "RPT_Student_Report.rpt"));
-            ConnectionInfo connectInfo = new ConnectionInfo()
+            /*
+              ConnectionInfo connectInfo = new ConnectionInfo()
             {
                 ServerName = @".\sqlexpress",
                 DatabaseName = "Examination",
                 UserID = "sa",
                 Password = "P@ssw0rd"
             };
-            rd.SetDatabaseLogon("sa", "P@ssw0rd");
-            foreach (CrystalDecisions.CrystalReports.Engine.Table tbl in rd.Database.Tables)
+
+            report.SetDatabaseLogon("sa", "P@ssw0rd");
+            foreach (CrystalDecisions.CrystalReports.Engine.Table tbl in report.Database.Tables)
             {
                 tbl.LogOnInfo.ConnectionInfo = connectInfo;
                 tbl.ApplyLogOnInfo(tbl.LogOnInfo);
             }
-            rd.SetDataSource(model);
+             */
 
-             
-           /* Response.Buffer = false;
-            Response.ClearContent();
-            Response.ClearHeaders();*/
-
-            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.ExcelWorkbook);
-            stream.Seek(0, SeekOrigin.Begin);
+            report.SetDataSource(model);
 
 
-           // return File(stream, "application/pdf", "examReport.pdf");
+            Stream stream = report.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+         
+            stream.Seek(0,SeekOrigin.Begin);
+            httpResponseMessage.Content = new StreamContent(stream);
+            httpResponseMessage.Content.Headers.Add("X.filename","Report.pdf");
+            httpResponseMessage.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/pdf");
+            httpResponseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("inline"); // for download just write "attachment"
+            httpResponseMessage.Content.Headers.ContentDisposition.FileName ="ExamReport.pdf" ;
 
-            /* var path = @"E:\GPITI\ExaminationAPI\Examination\Reports\RPT_Student_Report.rpt";
-             HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
-              stream = new FileStream(path, FileMode.Open, FileAccess.Read);
-             result.Content = new StreamContent(stream);
-             result.Content.Headers.ContentType =
-                 new MediaTypeHeaderValue("application/pdf");
-             return result;*/
-
-           return Ok(data);
+            httpResponseMessage.StatusCode = HttpStatusCode.OK;
+            return httpResponseMessage;
 
         }
+
+ 
 
 
     }

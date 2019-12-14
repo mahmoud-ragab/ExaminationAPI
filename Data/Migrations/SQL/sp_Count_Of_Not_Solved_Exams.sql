@@ -19,6 +19,6 @@ inner join Student s
 on s.Id = sc.Student_Id and s.Id =@id
 
 
-where  e.Id   not in (select Exam_Id from StudentExam)
+where  e.Id   not in (select Exam_Id from StudentExam where s.Id =Student_Id)
 
 RETURN 0

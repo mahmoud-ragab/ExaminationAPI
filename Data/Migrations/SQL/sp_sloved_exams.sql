@@ -3,7 +3,7 @@
 @id int
      AS
 
-select e.Id as ExamID,
+select top(15) e.Id as ExamID,
 i.Name as Instructor,
 t.Name as Topic ,
 c.Name as Course   ,
@@ -12,7 +12,11 @@ c.Name as Course   ,
 from Question q
 inner join AnswerSheet a
 on a.question_id = q.id and q.exam_id =e.Id
-and a.Answer_Id = q.CorrectAnswer) as Degree
+and a.Answer_Id = q.CorrectAnswer
+
+inner join StudentExam se
+on se.Id = a.Student_Exam_Id and se.Student_Id=@id
+) as Degree
 
 from Exam e
 
@@ -23,11 +27,10 @@ on e.Course_Id = c.Id
 inner join topic t
 on t.Id = c.Topic_Id
 
-inner join InstructorCourse ic
-on ic.Course_Id = e.Course_Id
+ 
 
 inner join Instructor i
-on i.Id = ic.Instructor_Id
+on i.Id = e.Instructor_Id
 
 inner join StudentCourse sc
 on sc.Course_Id = e.Course_Id
@@ -43,6 +46,7 @@ on a.Student_Exam_Id = se.id
 and se.Student_Id = @id
 )
 
+order by e.Id desc
 
 
 RETURN 0

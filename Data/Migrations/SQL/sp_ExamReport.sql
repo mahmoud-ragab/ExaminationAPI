@@ -32,11 +32,10 @@ on ans.id = q.CorrectAnswer
  inner join Course c
  on c.Id = e.Course_Id
 
-inner join InstructorCourse ic
-on ic.Course_Id = e.Course_Id
+ 
 
 inner join Instructor i
-on i.Id = ic.Instructor_Id
+on i.Id = e.Instructor_Id
 
 inner join topic t
 on t.Id = c.Topic_Id

@@ -183,13 +183,10 @@
     <Compile Include="Models\ResponseModels\QuestionAnswersModel.cs" />
     <Compile Include="Models\ResponseModels\QuestionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\RPT_Student_Report.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\RPT_Student_Report1.cs">
+    <Compile Include="Reports\rpt_ExamReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RPT_Student_Report.rpt</DependentUpon>
+      <DependentUpon>rpt_ExamReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
@@ -246,7 +243,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\RequestModels\" />
     <Folder Include="Views\Exam\" />
   </ItemGroup>
   <ItemGroup>
@@ -292,9 +288,9 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reports\RPT_Student_Report.rpt">
+    <EmbeddedResource Include="Reports\rpt_ExamReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT_Student_Report1.cs</LastGenOutput>
+      <LastGenOutput>rpt_ExamReport.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,15 +1,9 @@
-﻿using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
+﻿
 using Data.Entities;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
+ 
 
 namespace Data.Repositories
 {
@@ -66,7 +60,7 @@ namespace Data.Repositories
         }
 
 
-
+        
 
 
     }
