@@ -15,5 +15,14 @@ namespace Data.Repositories
         {
             return context.Question.ToList();
         }
+
+        public void GenerateExam_SP(int courseID, int numberOfMCQ, int numberOfTRUE_FALSE)
+        {
+            context.Database.SqlQuery<Object>(
+                "exec genreateExam @courseID, @numberOfMcq, @numberOfTrue_False",
+                new System.Data.SqlClient.SqlParameter("@courseID", courseID),
+                new System.Data.SqlClient.SqlParameter("@numberOfMcq", numberOfMCQ),
+                new System.Data.SqlClient.SqlParameter("@numberOfTrue_False", numberOfTRUE_FALSE)).FirstOrDefault();
+        }
     }
 }

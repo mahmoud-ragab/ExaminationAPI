@@ -89,7 +89,7 @@ namespace Data.Migrations
                 "dbo.Instructor",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: false),
                         Name = c.String(maxLength: 50),
                         Degree = c.String(maxLength: 50),
                         Salary = c.Int(),
@@ -114,7 +114,7 @@ namespace Data.Migrations
                 "dbo.Student",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: false),
                         Name = c.String(maxLength: 50),
                         Address = c.String(maxLength: 100),
                         Age = c.Short(),

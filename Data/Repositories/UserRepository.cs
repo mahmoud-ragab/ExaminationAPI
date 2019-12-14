@@ -15,11 +15,20 @@ namespace Data.Repositories
         {
             return examinationContext.User.Where(u => u.Token == token).FirstOrDefault();
         }
-        public bool Add(User user)
+        public bool Add(User user, int deptId)
         {
             try
             {
-                examinationContext.User.AddOrUpdate(user);
+                if (user.Type == 1)
+                {
+                    var student = new Entities.Student { Name = user.UserName, Dept_id = deptId, User = user };
+                    examinationContext.Student.Add(student);
+                }
+                else if (user.Type == 2)
+                {
+                    var instructor = new Entities.Instructor { Name = user.UserName, Dept_Id = deptId, User = user };
+                    examinationContext.Instructor.Add(instructor);
+                }
                 examinationContext.SaveChanges();
                 return true;
             }

@@ -5,6 +5,7 @@ namespace Data.Migrations
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.IO;
     using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Data.ExaminationContext>
@@ -12,10 +13,38 @@ namespace Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(Data.ExaminationContext context)
         {
+            var relativePath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\")) + "\\Migrations\\SQL\\";
+            DirectoryInfo dir = new DirectoryInfo(relativePath);
+            FileInfo[] Files = dir.GetFiles("*.sql");
+            string sql = "";
+            foreach (FileInfo file in Files)
+            {
+                try
+                {
+                    sql = File.ReadAllText(file.FullName) + "";
+                    context.Database.ExecuteSqlCommand(sql);
+                }
+                catch(Exception ex)
+                {
+
+                }
+            }
+
+
+            context.Topic.AddOrUpdate(
+                  t => t.Id,
+                  new Topic { Name = "Programming" },
+                  new Topic { Name = "DB" },
+                  new Topic { Name = "Web" },
+                  new Topic { Name = "Operating System" },
+                  new Topic { Name = "Design" }
+                );
+
             AddTopicsData(context);
             AddCoursesData(context);
             AddDepartmentsData(context);
