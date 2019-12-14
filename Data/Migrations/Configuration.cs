@@ -35,17 +35,10 @@ namespace Data.Migrations
                 }
             }
 
-
-            context.Topic.AddOrUpdate(
-                  t => t.Id,
-                  new Topic { Name = "Programming" },
-                  new Topic { Name = "DB" },
-                  new Topic { Name = "Web" },
-                  new Topic { Name = "Operating System" },
-                  new Topic { Name = "Design" }
-                );
-
+            
             AddTopicsData(context);
+            context.SaveChanges();
+
             AddCoursesData(context);
             AddDepartmentsData(context);
             AddQuestionData(context);
