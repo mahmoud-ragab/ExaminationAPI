@@ -19,6 +19,20 @@ namespace Data.Repositories
         {
             try
             {
+                if (user.Type == 1)
+                {
+                    var student = new Entities.Student { Name = user.UserName };
+                    examinationContext.Student.Add(student);
+                    examinationContext.SaveChanges();
+                    user.Id = student.Id;
+                }
+                else if (user.Type == 2)
+                {
+                    var instructor = new Entities.Instructor { Name = user.UserName };
+                    examinationContext.Instructor.Add(instructor);
+                    examinationContext.SaveChanges();
+                    user.Id = instructor.Id;
+                }
                 examinationContext.User.AddOrUpdate(user);
                 examinationContext.SaveChanges();
                 return true;
