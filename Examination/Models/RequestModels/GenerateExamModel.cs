@@ -10,5 +10,6 @@ namespace Examination.Models.RequestModels
         public int courseID { get; set; }
         public int numberOfMCQ { get; set; }
         public int numberOfTRUE_FALSE { get; set; }
+        public int InstructorID { get; set; }
     }
 }
