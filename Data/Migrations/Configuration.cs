@@ -29,22 +29,56 @@ namespace Data.Migrations
                     sql = File.ReadAllText(file.FullName) + "";
                     context.Database.ExecuteSqlCommand(sql);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
 
                 }
             }
 
-            
+
+            AddDepartmentsData(context);
             AddTopicsData(context);
             context.SaveChanges();
-
+            AddInstructorData(context);
+            AddInstructorCoursesData(context);
             AddCoursesData(context);
-            AddDepartmentsData(context);
             AddQuestionData(context);
             context.SaveChanges();
         }
 
+        private void AddInstructorData(ExaminationContext context)
+        {
+            context.User.AddOrUpdate(
+                u => u.Id,
+                new User { UserName = "Amr", Email = "Amr", Type = 2, Password = "password" },
+                new User { UserName = "Ragab", Email = "Ragab", Type = 2, Password = "password" },
+                new User { UserName = "Abdallah", Email = "Abdallah", Type = 2, Password = "password" },
+                new User { UserName = "Sadawy", Email = "Sadawy", Type = 2, Password = "password" },
+                new User { UserName = "Tareq", Email = "Tareq", Type = 2, Password = "password" }
+                );
+            context.SaveChanges();
+
+            context.Instructor.AddOrUpdate(
+                i => i.Id,
+                new Instructor { Id = 1, Name = "Amr", Degree = "Beachlor", Salary = 5000, Dept_Id = 1 },
+                new Instructor { Id = 2, Name = "Ragab", Degree = "Beachlor", Salary = 6000, Dept_Id = 2 },
+                new Instructor { Id = 3, Name = "Abdallah", Degree = "Beachlor", Salary = 7000, Dept_Id = 3 },
+                new Instructor { Id = 4, Name = "Sadawy", Degree = "Beachlor", Salary = 8000, Dept_Id = 4 },
+                new Instructor { Id = 5, Name = "Tareq", Degree = "Beachlor", Salary = 9000, Dept_Id = 5 }
+                );
+        }
+
+        private void AddInstructorCoursesData(ExaminationContext context)
+        {//hoa eltable da gwah el course_id wel instructor_id composite?>. ah
+            context.InstructorCourse.AddOrUpdate(
+                ic => ic.Course_Id,
+                new InstructorCourse { Course_Id = 1, Instructor_Id = 1 },
+                new InstructorCourse { Course_Id = 2, Instructor_Id = 1 },
+                new InstructorCourse { Course_Id = 3, Instructor_Id = 1 },
+                new InstructorCourse { Course_Id = 4, Instructor_Id = 2 },
+                new InstructorCourse { Course_Id = 5, Instructor_Id = 2 }
+                );
+        }
 
         private void AddDepartmentsData(ExaminationContext context)
         {

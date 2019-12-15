@@ -17,5 +17,10 @@ namespace Examination.Controllers
         {
             return Ok(InstructorService.GetInstructor(id));
         }
+        [Route("api/Instructor/{id}/courses")]
+        public IHttpActionResult GetInstructorCourses(int id)
+        {
+            return Ok(InstructorService.GetInstructorCoursesList(id));
+        }
     }
 }
