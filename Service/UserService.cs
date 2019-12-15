@@ -17,7 +17,7 @@ namespace Service
             return userRepository.GetUserByToken(token).Id;
         }
 
-        public User Register(string userName, string email, string pass, int type)
+        public User Register(string userName, string email, string pass, int type, int deptId)
         {
             var user = new User
             {
@@ -25,9 +25,9 @@ namespace Service
                 Email = email.ToLower(),
                 Password = pass,
                 Type = type,
-                Token = Guid.NewGuid().ToString()
+                Token = Guid.NewGuid().ToString(),
             };
-            return userRepository.Add(user) ? user : null;
+            return userRepository.Add(user, deptId) ? user : null;
         }
 
         public User Login(string email, string password)

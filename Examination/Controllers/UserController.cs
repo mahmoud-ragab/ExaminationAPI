@@ -17,7 +17,9 @@ namespace Examination.Controllers
         [HttpPut]
         public IHttpActionResult Register(RegisterModel registerModel)
         {
-            var user = userService.Register(registerModel.UserName, registerModel.Email, registerModel.Password, registerModel.Type);
+            var user = userService.Register(registerModel.UserName, registerModel.Email,
+                                            registerModel.Password, registerModel.Type, registerModel.DepartmentId);
+            
             if (user != null)
                 return Created("user", user);
             else

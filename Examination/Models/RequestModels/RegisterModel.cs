@@ -11,5 +11,6 @@ namespace Examination.Models.RequestModels
         public string Email { get; set; }
         public string Password { get; set; }
         public int Type { get; set; }
+        public int DepartmentId { get; set; }
     }
 }

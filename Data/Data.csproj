@@ -93,9 +93,11 @@
     <Content Include="Migrations\SQL\sp_Count_Of_Not_Solved_Exams.sql" />
     <Content Include="Migrations\SQL\sp_Count_Of_Solved_Exams.sql" />
     <Content Include="Migrations\SQL\sp_ExamReport.sql" />
+    <Content Include="Migrations\SQL\sp_generateExam.sql" />
     <Content Include="Migrations\SQL\sp_Not_sloved_exams.sql" />
     <Content Include="Migrations\SQL\sp_sloved_exams.sql" />
     <Compile Include="Repositories\Solving-ExamRepository.cs" />
+    <Compile Include="Repositories\DepartmentRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ExamRepository.cs" />

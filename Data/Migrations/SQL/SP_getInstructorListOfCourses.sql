@@ -2,11 +2,8 @@ create proc getInstructorListOfCourses
     (@ins_ID int)
 as
 select *
-from Instructor I
+from Course C
     join
     InstructorCourse IC
-    on I.Id = IC.Instructor_Id
-    join
-    Course C
-    on C.Id = IC.Course_Id
+    on IC.Instructor_Id = @ins_ID  and C.Id = IC.Course_Id
 return
