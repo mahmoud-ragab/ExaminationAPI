@@ -31,6 +31,9 @@ namespace Data.Entities
         [ForeignKey("CorrectAnswer")]
         public virtual Answer Answer { get; set; }
 
+        [ForeignKey("Course")]
+        public int CoursedId { get; set; }
+        public virtual Course Course { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Answer> Answers { get; set; }
