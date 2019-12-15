@@ -22,7 +22,6 @@ namespace Data.Repositories
 
             var data = examinationContext.Database.SqlQuery<Solved_Exams>("sp_sloved_exams @id", std_id).ToList();
          
-
             return (data);
         }
 
@@ -45,7 +44,6 @@ namespace Data.Repositories
 
             var data = examinationContext.Database.SqlQuery<int>("sp_Count_Of_Solved_Exams @id", std_id).FirstOrDefault();
 
-
             return (data);
         }
 
@@ -54,7 +52,6 @@ namespace Data.Repositories
             var std_id = new SqlParameter("@id", id);
 
             int data = examinationContext.Database.SqlQuery<int>("sp_Count_Of_Not_Solved_Exams @id", std_id).FirstOrDefault();
-
 
             return (data);
         }
