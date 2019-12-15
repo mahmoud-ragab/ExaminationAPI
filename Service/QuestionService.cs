@@ -18,9 +18,10 @@ namespace Service
             return questionRepository.GetAll();
         }
 
-        public void generateExam(int courseID, int numberOfMCQ, int numberOfTRUE_FALSE)
+        public List<Question> generateExam(int courseID, int numberOfMCQ, int numberOfTRUE_FALSE , int InstructorID)
         {
-            questionRepository.GenerateExam_SP(courseID, numberOfMCQ, numberOfTRUE_FALSE);
+            var createdExam = questionRepository.GenerateExam_SP(courseID, numberOfMCQ, numberOfTRUE_FALSE , InstructorID);
+            return createdExam;
         }
     }
 }

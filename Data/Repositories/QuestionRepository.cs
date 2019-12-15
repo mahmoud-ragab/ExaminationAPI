@@ -16,13 +16,15 @@ namespace Data.Repositories
             return context.Question.ToList();
         }
 
-        public void GenerateExam_SP(int courseID, int numberOfMCQ, int numberOfTRUE_FALSE)
+        public List<Question> GenerateExam_SP(int courseID, int numberOfMCQ, int numberOfTRUE_FALSE , int instructorID)
         {
-            context.Database.SqlQuery<Object>(
-                "exec genreateExam @courseID, @numberOfMcq, @numberOfTrue_False",
+             var createdExam = context.Database.SqlQuery<Question>(
+                "exec genreateExam @courseID, @numberOfMcq, @numberOfTrue_False,@instructorID ",
                 new System.Data.SqlClient.SqlParameter("@courseID", courseID),
                 new System.Data.SqlClient.SqlParameter("@numberOfMcq", numberOfMCQ),
-                new System.Data.SqlClient.SqlParameter("@numberOfTrue_False", numberOfTRUE_FALSE)).FirstOrDefault();
+                new System.Data.SqlClient.SqlParameter("@numberOfTrue_False", numberOfTRUE_FALSE),
+                new System.Data.SqlClient.SqlParameter("@instructorID", instructorID)).ToList();
+            return createdExam;
         }
     }
 }

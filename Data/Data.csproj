@@ -84,8 +84,17 @@
     <Compile Include="Migrations\201912091543354_add-question-type.Designer.cs">
       <DependentUpon>201912091543354_add-question-type.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912141801536_addingRelationCourseAndQuestion.cs" />
+    <Compile Include="Migrations\201912141801536_addingRelationCourseAndQuestion.Designer.cs">
+      <DependentUpon>201912141801536_addingRelationCourseAndQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912141803102_addingRelationCourseAndQuestion_FK.cs" />
+    <Compile Include="Migrations\201912141803102_addingRelationCourseAndQuestion_FK.Designer.cs">
+      <DependentUpon>201912141803102_addingRelationCourseAndQuestion_FK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Content Include="Migrations\SQL\sp_generateExam.sql" />
     <Content Include="Migrations\SQL\SP_Test.sql" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\InstructorRepository.cs" />
@@ -111,6 +120,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912091543354_add-question-type.resx">
       <DependentUpon>201912091543354_add-question-type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912141801536_addingRelationCourseAndQuestion.resx">
+      <DependentUpon>201912141801536_addingRelationCourseAndQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912141803102_addingRelationCourseAndQuestion_FK.resx">
+      <DependentUpon>201912141803102_addingRelationCourseAndQuestion_FK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
