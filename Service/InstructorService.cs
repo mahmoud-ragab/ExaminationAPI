@@ -15,6 +15,11 @@ namespace Service
         {
             return instructorRepository.getInstructorInformation(id);
         }
+        public static List<Course> GetInstructorCoursesList(int id)
+        {
+            return instructorRepository.GetInstructorCoursesList(id);
+        }
+
 
     }
 }
