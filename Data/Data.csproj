@@ -98,6 +98,8 @@
       <DependentUpon>201912141803102_addingRelationCourseAndQuestion_FK.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Content Include="Migrations\SQL\getInstructorExamListByCourse.sql" />
+    <Content Include="Migrations\SQL\getInstructorStudentsAnswerSheetofExam.sql" />
     <Content Include="Migrations\SQL\sp_Count_Of_Not_Solved_Exams.sql" />
     <Content Include="Migrations\SQL\sp_Count_Of_Solved_Exams.sql" />
     <Content Include="Migrations\SQL\sp_ExamReport.sql" />
@@ -106,7 +108,6 @@
     <Content Include="Migrations\SQL\sp_sloved_exams.sql" />
     <Compile Include="Repositories\DepartmentRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-    <Content Include="Migrations\SQL\sp_generateExam.sql" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ExamRepository.cs" />
     <Compile Include="Repositories\InstructorRepository.cs" />
