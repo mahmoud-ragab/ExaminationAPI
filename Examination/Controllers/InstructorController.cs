@@ -22,5 +22,22 @@ namespace Examination.Controllers
         {
             return Ok(InstructorService.GetInstructorCoursesList(id));
         }
+        [Route("api/Instructor/{id}/course/{cid}/exams")]
+        public IHttpActionResult GetInstructorExamOfCourse(int id, int cid)
+        {
+            var exam = InstructorService.GetInstructorExamOFCourse(id, cid);
+            var res = exam.Select(e => new
+            {
+                id = e.Id,
+                students = e.StudentExam.Where(ee=>ee.Exam_Id == id).Select(se=>new { se.Student.Id, se.Student.Name }).ToList()
+                //Students = e.Course.StudentCourse.Select(sc => new { sc.Student.Id, sc.Student.Name }).ToList()
+            }).ToList();
+            return Ok(res);
+        }
+        [Route("api/Instructor/{id}/course/{cid}/exam/{eid}/student/{sid}/modelanswer")]
+        public IHttpActionResult GetAnswerSheetListOfExam(int eid,int sid)
+        {
+            return Ok(InstructorService.GetStudentAnswerSheet(eid, sid));
+        }
     }
 }

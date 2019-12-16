@@ -19,7 +19,13 @@ namespace Service
         {
             return instructorRepository.GetInstructorCoursesList(id);
         }
-
-
+        public static List<Exam> GetInstructorExamOFCourse(int id,int cid)
+        {
+            return instructorRepository.GetInstructorExamListByCourse(id,cid);
+        }
+        public static AnswerSheet GetStudentAnswerSheet(int eid,int sid)
+        {
+            return instructorRepository.GetStudentExamModelAnswer(eid,sid);
+        }
     }
 }
