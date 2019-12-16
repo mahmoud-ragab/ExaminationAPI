@@ -23,11 +23,17 @@ namespace Data.Repositories
                 {
                     var student = new Entities.Student { Name = user.UserName, Dept_id = deptId, User = user };
                     examinationContext.Student.Add(student);
+                    var crs = examinationContext.Course.Select(c =>
+                            new Entities.StudentCourse { Course_Id = c.Id, Student_Id = user.Id }).ToList();
+                    examinationContext.StudentCourse.AddRange(crs);
                 }
                 else if (user.Type == 2)
                 {
                     var instructor = new Entities.Instructor { Name = user.UserName, Dept_Id = deptId, User = user };
                     examinationContext.Instructor.Add(instructor);
+                    var crs = examinationContext.Course.Select(c =>
+                            new Entities.InstructorCourse { Course_Id = c.Id, Instructor_Id = user.Id }).ToList();
+                    examinationContext.InstructorCourse.AddRange(crs);
                 }
                 examinationContext.SaveChanges();
                 return true;
