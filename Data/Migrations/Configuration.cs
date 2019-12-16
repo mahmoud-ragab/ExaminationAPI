@@ -43,9 +43,9 @@ namespace Data.Migrations
             context.SaveChanges();
 
             AddInstructorData(context);
-            AddInstructorCoursesData(context);
+            //AddInstructorCoursesData(context);
             AddQuestionData(context);
-            AddExamData(context);
+            //AddExamData(context);
             context.SaveChanges();
         }
 
@@ -65,8 +65,8 @@ namespace Data.Migrations
         {
             context.User.AddOrUpdate(
                 u => u.Id,
-                new User { UserName = "Amr", Email = "Amr", Type = 2, Password = "password" },
-                new User { UserName = "Ragab", Email = "Ragab", Type = 2, Password = "password" },
+                new User { UserName = "Amr", Email = "Amr", Type = 1, Password = "password" },
+                new User { UserName = "Ragab", Email = "Ragab", Type = 1, Password = "password" },
                 new User { UserName = "Abdallah", Email = "Abdallah", Type = 2, Password = "password" },
                 new User { UserName = "Sadawy", Email = "Sadawy", Type = 2, Password = "password" },
                 new User { UserName = "Tareq", Email = "Tareq", Type = 2, Password = "password" }
@@ -75,16 +75,19 @@ namespace Data.Migrations
 
             context.Instructor.AddOrUpdate(
                 i => i.Id,
-                new Instructor { Id = 1, Name = "Amr", Degree = "Beachlor", Salary = 5000, Dept_Id = 1 },
-                new Instructor { Id = 2, Name = "Ragab", Degree = "Beachlor", Salary = 6000, Dept_Id = 2 },
                 new Instructor { Id = 3, Name = "Abdallah", Degree = "Beachlor", Salary = 7000, Dept_Id = 3 },
                 new Instructor { Id = 4, Name = "Sadawy", Degree = "Beachlor", Salary = 8000, Dept_Id = 4 },
                 new Instructor { Id = 5, Name = "Tareq", Degree = "Beachlor", Salary = 9000, Dept_Id = 5 }
                 );
+            context.Student.AddOrUpdate(
+                s => s.Id,
+                new Student { Id = 1, Name = "Amr", Dept_id = 1 },
+                new Student { Id = 2, Name = "Ragab", Dept_id = 1 }
+                );
         }
 
         private void AddInstructorCoursesData(ExaminationContext context)
-        {//hoa eltable da gwah el course_id wel instructor_id composite?>. ah
+        {
             context.InstructorCourse.AddOrUpdate(
                 ic => ic.Course_Id,
                 new InstructorCourse { Course_Id = 1, Instructor_Id = 1 },
@@ -188,7 +191,7 @@ namespace Data.Migrations
                                                     new Answer{ Content = "Here now" },
                                                     new Answer{ Content = "China" },
                                       },
-                                      
+
                                       CoursedId = 1
                                   },
                                   new Question
