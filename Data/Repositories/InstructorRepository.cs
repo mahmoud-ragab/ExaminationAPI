@@ -30,12 +30,12 @@ namespace Data.Repositories
             //return exams;
             return context.Exam.Where(e => e.Instructor_Id == id && e.Course_Id == c_id).ToList();
         }
-        public AnswerSheet GetStudentExamModelAnswer(int e_id,int s_id)
+        public List<AnswerSheet> GetStudentExamModelAnswer(int e_id,int s_id)
         {
             //var _id = new SqlParameter("@exam_ID", e_id);
             //var answerSheets = context.Database.SqlQuery<AnswerSheet>("getInstructorAnswerSheetOfExam @exam_ID",_id).ToList();
             //return answerSheets;
-            return context.StudentExam.Where(se => se.Exam_Id == e_id && se.Student_Id == s_id).FirstOrDefault().AnswerSheet.FirstOrDefault();
+            return context.StudentExam.Where(se => se.Exam_Id == e_id && se.Student_Id == s_id).FirstOrDefault().AnswerSheet.ToList();
             //var id = context.StudentExam.Where(se => se.Exam_Id == e_id && se.Student_Id == s_id).Select(s=> s.Id).SingleOrDefault();
             //return context.AnswerSheet.Where(a => a.Student_Exam_Id == id);
         }

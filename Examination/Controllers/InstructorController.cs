@@ -37,7 +37,13 @@ namespace Examination.Controllers
         [Route("api/Instructor/{id}/course/{cid}/exam/{eid}/student/{sid}/modelanswer")]
         public IHttpActionResult GetAnswerSheetListOfExam(int eid,int sid)
         {
-            return Ok(InstructorService.GetStudentAnswerSheet(eid, sid));
+            var res = InstructorService.GetStudentAnswerSheet(eid, sid);
+            var r = res.Select(ii => new
+            {
+                Questions = new { questionContent = ii.Question.Content, correctAnswer = ii.Question.CorrectAnswer },
+                selectedAnswer = new { asnwerContent = ii.Answer.Content, answerId = ii.Answer_Id }
+            });
+            return Ok(r);
         }
     }
 }
