@@ -23,9 +23,9 @@ namespace Service
         {
             return instructorRepository.GetInstructorExamListByCourse(id,cid);
         }
-        public static List<AnswerSheet> GetExamAnswerSheets(int eid)
+        public static AnswerSheet GetStudentAnswerSheet(int eid,int sid)
         {
-            return instructorRepository.GetExamAnswerSheetList(eid);
+            return instructorRepository.GetStudentExamModelAnswer(eid,sid);
         }
     }
 }

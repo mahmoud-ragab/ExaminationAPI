@@ -24,16 +24,20 @@ namespace Data.Repositories
         }
         public List<Exam> GetInstructorExamListByCourse(int id, int c_id)
         {
-            var _Ins_id = new SqlParameter("@ins_ID", id);
-            var _c_id = new SqlParameter("@c_ID", c_id);
-            var exams = context.Database.SqlQuery<Exam>("getInstructorExamListByCourse @ins_ID @c_ID", _Ins_id, _c_id).ToList();
-            return exams;
+            //var _Ins_id = new SqlParameter("@ins_ID", id);
+            //var _c_id = new SqlParameter("@c_ID", c_id);
+            //var exams = context.Database.SqlQuery<Exam>("getInstructorExamListByCourse @ins_ID ,@c_ID", _Ins_id, _c_id).ToList();
+            //return exams;
+            return context.Exam.Where(e => e.Instructor_Id == id && e.Course_Id == c_id).ToList();
         }
-        public List<AnswerSheet> GetExamAnswerSheetList(int e_id)
+        public AnswerSheet GetStudentExamModelAnswer(int e_id,int s_id)
         {
-            var _id = new SqlParameter("@exam_ID", e_id);
-            var answerSheets = context.Database.SqlQuery<AnswerSheet>("getInstructorAnswerSheetOfExam @exam_ID",_id).ToList();
-            return answerSheets;
+            //var _id = new SqlParameter("@exam_ID", e_id);
+            //var answerSheets = context.Database.SqlQuery<AnswerSheet>("getInstructorAnswerSheetOfExam @exam_ID",_id).ToList();
+            //return answerSheets;
+            return context.StudentExam.Where(se => se.Exam_Id == e_id && se.Student_Id == s_id).FirstOrDefault().AnswerSheet.FirstOrDefault();
+            //var id = context.StudentExam.Where(se => se.Exam_Id == e_id && se.Student_Id == s_id).Select(s=> s.Id).SingleOrDefault();
+            //return context.AnswerSheet.Where(a => a.Student_Exam_Id == id);
         }
 
     }
