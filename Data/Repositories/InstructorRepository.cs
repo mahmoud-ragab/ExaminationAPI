@@ -32,8 +32,15 @@ namespace Data.Repositories
         public List<AnswerSheet> GetStudenAnswerSheet(int e_id)
         {
             var _id = new SqlParameter("@exam_ID", e_id);
-            var answerSheets = context.Database.SqlQuery<AnswerSheet>("getInstructorAnswerSheetOfExam @exam_ID",_id).ToList();
+            var answerSheets = context.Database.SqlQuery<AnswerSheet>("getInstructorAnswerSheetOfExam @exam_ID", _id).ToList();
             return answerSheets;
+        }
+
+        public List<Course> getCoursesOfInstructor(int id)
+        {
+
+            var inst = context.Instructor.Where(i => i.Id == id).FirstOrDefault();
+            return inst.InstructorCourse.Select(ic => new Course { Id = ic.Course_Id, Name = ic.Course.Name }).ToList();
         }
 
     }
