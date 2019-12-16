@@ -106,6 +106,7 @@
     <Content Include="Migrations\SQL\sp_generateExam.sql" />
     <Content Include="Migrations\SQL\sp_Not_sloved_exams.sql" />
     <Content Include="Migrations\SQL\sp_sloved_exams.sql" />
+    <Compile Include="Repositories\Solving-ExamRepository.cs" />
     <Compile Include="Repositories\DepartmentRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

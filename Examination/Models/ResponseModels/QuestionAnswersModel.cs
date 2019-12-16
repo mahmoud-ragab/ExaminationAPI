@@ -9,5 +9,6 @@ namespace Examination.Models
     {
         public QuestionModel Question { get; set; }
         public List<AnswerModel> Answers { get; set; }
+        public int CorrectAnswer { get; set; }
     }
 }
