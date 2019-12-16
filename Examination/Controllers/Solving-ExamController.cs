@@ -20,6 +20,15 @@ namespace Examination.Controllers
         {
             return Ok(Solving_ExamService.GetExam(id));
         }
+        [HttpPost]
+        [Route("api/PostExam/{id}")]
+        public void PostExam(Object c)
+        {
+            var x = c;
+            int vb = 1;
+            Console.WriteLine("hey");
+
+        }
 
     }
 }
