@@ -43,7 +43,20 @@ namespace Data.Migrations
             AddInstructorCoursesData(context);
             AddCoursesData(context);
             AddQuestionData(context);
+            AddExamData(context);
             context.SaveChanges();
+        }
+
+        private void AddExamData(ExaminationContext context)
+        {
+            context.Exam.AddOrUpdate(
+                e => e.Id,
+                new Exam { Course_Id = 1,Instructor_Id = 1},
+                new Exam { Course_Id = 2,Instructor_Id = 1},
+                new Exam { Course_Id = 3,Instructor_Id = 1},
+                new Exam { Course_Id = 4,Instructor_Id = 2},
+                new Exam { Course_Id = 5,Instructor_Id = 2}
+                );
         }
 
         private void AddInstructorData(ExaminationContext context)

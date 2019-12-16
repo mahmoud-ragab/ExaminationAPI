@@ -22,5 +22,15 @@ namespace Examination.Controllers
         {
             return Ok(InstructorService.GetInstructorCoursesList(id));
         }
+        [Route("api/Instructor/{id}/{cid}/exams")]
+        public IHttpActionResult GetInstructorExamOfCourse(int id,int cid)
+        {
+            return Ok(InstructorService.GetInstructorExamOFCourse(id,cid));
+        }
+        [Route("api/Instructor/{id}/exam/{eid}")]
+        public IHttpActionResult GetAnswerSheetListOfExam(int eid)
+        {
+            return Ok(InstructorService.GetExamAnswerSheets(eid));
+        }
     }
 }

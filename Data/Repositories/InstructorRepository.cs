@@ -29,7 +29,7 @@ namespace Data.Repositories
             var exams = context.Database.SqlQuery<Exam>("getInstructorExamListByCourse @ins_ID @c_ID", _Ins_id, _c_id).ToList();
             return exams;
         }
-        public List<AnswerSheet> GetStudenAnswerSheet(int e_id)
+        public List<AnswerSheet> GetExamAnswerSheetList(int e_id)
         {
             var _id = new SqlParameter("@exam_ID", e_id);
             var answerSheets = context.Database.SqlQuery<AnswerSheet>("getInstructorAnswerSheetOfExam @exam_ID",_id).ToList();
