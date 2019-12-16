@@ -1,6 +1,7 @@
 ﻿
 using Examination.Models;
 using Examination.Models.RequestModels;
+using Examination.Models.ResponseModels;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -21,13 +22,11 @@ namespace Examination.Controllers
             return Ok(Solving_ExamService.GetExam(id));
         }
         [HttpPost]
-        [Route("api/PostExam/{id}")]
-        public void PostExam(Object c)
+        [Route("api/PostExam")]
+        public IHttpActionResult PostExam(PostExamModel c)
         {
-            var x = c;
-            int vb = 1;
-            Console.WriteLine("hey");
-
+            Solving_ExamService.PostExam(c.Exam_id, c.Student_id, c.Questions_id, c.Answers_id);
+            return Ok();
         }
 
     }

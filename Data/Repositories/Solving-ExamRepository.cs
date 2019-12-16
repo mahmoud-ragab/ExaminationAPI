@@ -23,6 +23,24 @@ namespace Data.Repositories
             return examinationContext.Exam.Where(e => e.Id == id).FirstOrDefault();
         }
 
+        public void PostExam(int Exam_id, int Student_id, List<int> Questions_id, List<int> Answers_id)
+        {
+            var ansSheet = new List<AnswerSheet>();
+            for (int i = 0; i < Questions_id.Count; i++)
+                ansSheet.Add(new AnswerSheet
+                {
+                    Question_Id = Questions_id[i],
+                    Answer_Id = Answers_id[i]
+                });
+
+            examinationContext.StudentExam.Add(new StudentExam
+            {
+                Exam_Id = Exam_id,
+                Student_Id = Student_id,
+                AnswerSheet = ansSheet
+            });
+            examinationContext.SaveChanges();
+        }
 
 
     }

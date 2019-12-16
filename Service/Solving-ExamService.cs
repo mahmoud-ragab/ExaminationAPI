@@ -15,5 +15,10 @@ namespace Service
         {
             return ExamRepository.GetExam(id);
         }
+
+        public static void PostExam(int Exam_id, int Student_id, List<int> Questions_id, List<int> Answers_id)
+        {
+            ExamRepository.PostExam(Exam_id, Student_id, Questions_id, Answers_id);
+        }
     }
 }

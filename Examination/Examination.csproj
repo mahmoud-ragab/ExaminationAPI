@@ -185,6 +185,7 @@
     <Compile Include="Models\RequestModels\GenerateExamModel.cs" />
     <Compile Include="Models\ResponseModels\AnswerModel.cs" />
     <Compile Include="Models\ResponseModels\ExamModel.cs" />
+    <Compile Include="Models\ResponseModels\PostExamModel.cs" />
     <Compile Include="Models\ResponseModels\QuestionAnswersModel.cs" />
     <Compile Include="Models\ResponseModels\QuestionModel.cs" />
     <Compile Include="Models\ResponseModels\Solving-ExamModel.cs" />
