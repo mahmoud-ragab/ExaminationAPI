@@ -31,8 +31,8 @@ namespace Examination.Controllers
         [HttpPost]
         public IHttpActionResult generateExam([FromBody] GenerateExamModel model)
         {
-            questionService.generateExam(model.courseID, model.numberOfMCQ, model.numberOfTRUE_FALSE);
-            return Ok();
+            var createdExamQuestions =  questionService.generateExam(model.courseID, model.numberOfMCQ, model.numberOfTRUE_FALSE , model.InstructorID);
+            return Ok(createdExamQuestions);
         }
     }
 }

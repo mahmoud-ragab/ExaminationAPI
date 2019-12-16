@@ -39,9 +39,11 @@ namespace Data.Migrations
             AddDepartmentsData(context);
             AddTopicsData(context);
             context.SaveChanges();
+            AddCoursesData(context);
+            context.SaveChanges();
+
             AddInstructorData(context);
             AddInstructorCoursesData(context);
-            AddCoursesData(context);
             AddQuestionData(context);
             AddExamData(context);
             context.SaveChanges();
@@ -119,7 +121,8 @@ namespace Data.Migrations
                                                     new Answer{ Content = "Mary" },
                                                     new Answer{ Content = "Martha, Mary, May" },
                                                     new Answer{ Content = "May" },
-                                      }
+                                      },
+                                      CoursedId = 1
                                   },
                                   new Question
                                   {
@@ -129,7 +132,8 @@ namespace Data.Migrations
                                                     new Answer{ Content = "Place" },
                                                     new Answer{ Content = "Color" },
                                                     new Answer{ Content = "One of them" },
-                                      }
+                                      },
+                                      CoursedId = 1
                                   },
                                   new Question
                                   {
@@ -139,7 +143,8 @@ namespace Data.Migrations
                                                     new Answer{ Content = "6" },
                                                     new Answer{ Content = "12" },
                                                     new Answer{ Content = "3" },
-                                      }
+                                      },
+                                      CoursedId = 1
                                   },
                                   new Question
                                   {
@@ -149,7 +154,8 @@ namespace Data.Migrations
                                                     new Answer{ Content = "1" },
                                                     new Answer{ Content = "0" },
                                                     new Answer{ Content = "None of the above" },
-                                      }
+                                      },
+                                      CoursedId = 1
                                   },
                                   new Question
                                   {
@@ -159,7 +165,8 @@ namespace Data.Migrations
                                                     new Answer{ Content = "Oh yes this makes sense because negative minus negative equals positive. " },
                                                     new Answer{ Content = "Correct!" },
                                                     new Answer{ Content = "What Kind of question is this?" },
-                                      }
+                                      },
+                                      CoursedId = 1
                                   },
                                   new Question
                                   {
@@ -169,7 +176,8 @@ namespace Data.Migrations
                                                     new Answer{ Content = "(Furry animals)" },
                                                     new Answer{ Content = "It" },
                                                     new Answer{ Content = "(Amphibians,Reptiles, Seal Animals)" },
-                                      }
+                                      },
+                                      CoursedId = 1
                                   },
                                   new Question
                                   {
@@ -179,7 +187,9 @@ namespace Data.Migrations
                                                     new Answer{ Content = "in the U.S" },
                                                     new Answer{ Content = "Here now" },
                                                     new Answer{ Content = "China" },
-                                      }
+                                      },
+                                      
+                                      CoursedId = 1
                                   },
                                   new Question
                                   {
@@ -189,7 +199,8 @@ namespace Data.Migrations
                                                     new Answer{ Content = "Nowhere" },
                                                     new Answer{ Content = "Here" },
                                                     new Answer{ Content = "I'm not interested" },
-                                      }
+                                      },
+                                      CoursedId = 1
                                   },
                                   new Question
                                   {
@@ -199,7 +210,8 @@ namespace Data.Migrations
                                                     new Answer{ Content = "Correct" },
                                                     new Answer{ Content = "Correctly" },
                                                     new Answer{ Content = "Wrong" },
-                                      }
+                                      },
+                                      CoursedId = 1
                                   },
                                   new Question
                                   {
@@ -209,7 +221,8 @@ namespace Data.Migrations
                                                     new Answer{ Content = "Padding ton" },
                                                     new Answer{ Content = "Other" },
                                                     new Answer{ Content = "Yogy bear" },
-                                      }
+                                      },
+                                      CoursedId = 1
                                   }
                               );
         }
