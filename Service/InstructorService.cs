@@ -23,7 +23,7 @@ namespace Service
         {
             return instructorRepository.GetInstructorExamListByCourse(id,cid);
         }
-        public static AnswerSheet GetStudentAnswerSheet(int eid,int sid)
+        public static List<AnswerSheet> GetStudentAnswerSheet(int eid,int sid)
         {
             return instructorRepository.GetStudentExamModelAnswer(eid,sid);
         }

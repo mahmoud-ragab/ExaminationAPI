@@ -23,17 +23,21 @@ namespace Data.Repositories
                 {
                     var student = new Entities.Student { Name = user.UserName, Dept_id = deptId, User = user };
                     examinationContext.Student.Add(student);
-                    var crs = examinationContext.Course.Select(c =>
-                            new Entities.StudentCourse { Course_Id = c.Id, Student_Id = user.Id }).ToList();
-                    examinationContext.StudentCourse.AddRange(crs);
+                    examinationContext.SaveChanges();
+
+                    var crsList = new List<Entities.StudentCourse>();
+                    examinationContext.Course.Select(c =>new { c.Id }).ToList().ForEach(l => crsList.Add( new Entities.StudentCourse { Course_Id = l.Id, Student_Id = user.Id }));
+                    examinationContext.StudentCourse.AddRange(crsList);
                 }
                 else if (user.Type == 2)
                 {
                     var instructor = new Entities.Instructor { Name = user.UserName, Dept_Id = deptId, User = user };
                     examinationContext.Instructor.Add(instructor);
-                    var crs = examinationContext.Course.Select(c =>
-                            new Entities.InstructorCourse { Course_Id = c.Id, Instructor_Id = user.Id }).ToList();
-                    examinationContext.InstructorCourse.AddRange(crs);
+                    examinationContext.SaveChanges();
+
+                    var crsList = new List<Entities.InstructorCourse>();
+                    examinationContext.Course.Select(c => new { c.Id }).ToList().ForEach(l => crsList.Add(new Entities.InstructorCourse { Course_Id = l.Id, Instructor_Id = user.Id }));
+                    examinationContext.InstructorCourse.AddRange(crsList);
                 }
                 examinationContext.SaveChanges();
                 return true;

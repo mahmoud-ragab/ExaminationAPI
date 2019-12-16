@@ -43,9 +43,9 @@ namespace Data.Migrations
             context.SaveChanges();
 
             AddInstructorData(context);
-            AddInstructorCoursesData(context);
+            //AddInstructorCoursesData(context);
             AddQuestionData(context);
-            AddExamData(context);
+            //AddExamData(context);
             context.SaveChanges();
         }
 
@@ -87,7 +87,7 @@ namespace Data.Migrations
         }
 
         private void AddInstructorCoursesData(ExaminationContext context)
-        {//hoa eltable da gwah el course_id wel instructor_id composite?>. ah
+        {
             context.InstructorCourse.AddOrUpdate(
                 ic => ic.Course_Id,
                 new InstructorCourse { Course_Id = 1, Instructor_Id = 1 },

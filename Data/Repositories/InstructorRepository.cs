@@ -30,7 +30,7 @@ namespace Data.Repositories
             //return exams;
             return context.Exam.Where(e => e.Instructor_Id == id && e.Course_Id == c_id).ToList();
         }
-        public AnswerSheet GetStudentExamModelAnswer(int e_id,int s_id)
+        public List<AnswerSheet> GetStudentExamModelAnswer(int e_id,int s_id)
         {
             var _id = new SqlParameter("@exam_ID", e_id);
             var answerSheets = context.Database.SqlQuery<AnswerSheet>("getInstructorAnswerSheetOfExam @exam_ID", _id).ToList();
